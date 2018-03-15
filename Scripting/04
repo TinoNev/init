@@ -1,0 +1,9 @@
+s1=$(md5sum /etc/crontab)
+s2=$(cat /etc/verifcron)
+
+if ["$s1" -ne "$s2"]
+	then mail -s "Changement fichier crontab" root@mail.com | md5sum /etc/crontab > verifcron
+
+fi
+
+#lancer crontab -e 0 0 * * * ~/Documents/init/Scripting/04
